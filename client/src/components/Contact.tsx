@@ -21,6 +21,7 @@ export default function Contact() {
 
   const createRequestMutation = useMutation({
     mutationFn: async (data: InsertServiceRequest) => {
+      // Intenta enviar la solicitud al API
       return await apiRequest("POST", "/api/service-requests", data);
     },
     onSuccess: () => {
@@ -28,6 +29,7 @@ export default function Contact() {
         title: "Solicitud enviada",
         description: "Nos pondremos en contacto con usted pronto.",
       });
+      // Limpia el formulario al éxito
       setFormData({ name: "", phone: "", service: "", message: "" });
     },
     onError: () => {
@@ -41,11 +43,12 @@ export default function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    // Ejecuta la mutación (envío de datos)
     createRequestMutation.mutate(formData);
   };
 
   const handleWhatsAppClick = () => {
-    console.log("WhatsApp clicked");
+    // Número de WhatsApp configurado
     window.open("https://wa.me/5215512345678", "_blank");
   };
 

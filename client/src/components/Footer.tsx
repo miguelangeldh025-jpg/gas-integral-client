@@ -5,7 +5,18 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   const handleSocialClick = (platform: string) => {
-    console.log(`${platform} clicked`);
+    switch (platform) {
+      case "Facebook":
+        // Opción: No tengo Facebook, el botón no hace nada.
+        console.log("Facebook not configured");
+        break;
+      case "WhatsApp":
+        // CORRECCIÓN APLICADA: Abrir el enlace de WhatsApp
+        window.open("https://wa.me/5215512345678", "_blank"); 
+        break;
+      default:
+        console.log(`${platform} clicked`);
+    }
   };
 
   return (
